@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  backend:
+    image: back
+    networks:
+      - caddy
+    deploy:
+      labels:
+        caddy.address: http://shareameal.ribes.ovh
+        caddy.tls: "off"
+        caddy.proxy.transparent:
+        caddy.targetport: "8000"
+networks:
+  caddy:
+    external:
+      name: lb-net
