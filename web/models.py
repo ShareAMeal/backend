@@ -35,4 +35,4 @@ class Event(models.Model):
     description = models.TextField(blank=True, verbose_name="Description")
 
     def __str__(self):
-        return f"{self.name} par {self.organisateur.name}"
+        return f"{self.name} par {self.organizer.name}"
