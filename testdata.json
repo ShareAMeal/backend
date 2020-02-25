@@ -1,0 +1,102 @@
+[
+{
+  "model": "web.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$vYD0qomutPPP$yPimqOUOD51gdXO3Z90+4lu3jokj8+a54oA5dK0mRTY=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "root",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2020-02-25T18:48:13Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "web.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$gZU2v8ShrfON$dNF6+nBVqzOs46NlcYT8DoBvWewFXvvc7KS3H6Hys0E=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "utilisateur",
+    "first_name": "Jean",
+    "last_name": "Carton",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-02-25T18:50:42Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "web.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$hM7PqPYoj1qw$StbP1O6O2b4dgg3NiUHqlFQ1evpzYaux25pmEMW7hZQ=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "sopita",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-02-25T19:04:45.177Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "web.assocation",
+  "pk": 2,
+  "fields": {
+    "contact_email": "asso@helloasso.fr",
+    "name": "Association sympa",
+    "location": "local moisi",
+    "description": "viens on est bien et y'a dla bouf",
+    "phone": "01 12 34 56 78",
+    "admin": 3
+  }
+},
+{
+  "model": "web.assocation",
+  "pk": 3,
+  "fields": {
+    "contact_email": "sopita@asso-insa-lyon.fr",
+    "name": "La Sopita",
+    "location": "20 avenue albert Einstein",
+    "description": "asso Insalienne",
+    "phone": null,
+    "admin": 4
+  }
+},
+{
+  "model": "web.event",
+  "pk": 5,
+  "fields": {
+    "organizer": 2,
+    "name": "Soupe populaire",
+    "start_datetime": "2020-02-25T18:56:06Z",
+    "active": true,
+    "description": "venez vous restaurer"
+  }
+},
+{
+  "model": "web.event",
+  "pk": 6,
+  "fields": {
+    "organizer": 2,
+    "name": "Distribution de v\u00eatements",
+    "start_datetime": "2020-02-25T18:56:52Z",
+    "active": true,
+    "description": "polaires, chaussettes ..."
+  }
+}
+]
