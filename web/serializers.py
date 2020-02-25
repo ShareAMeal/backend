@@ -12,4 +12,4 @@ class AssoSerializer(serializers.ModelSerializer):
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Event
-        exclude = []
+        exclude = ['organizer']

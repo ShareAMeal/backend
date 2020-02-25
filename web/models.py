@@ -30,9 +30,9 @@ class Event(models.Model):
                                      on_delete=models.CASCADE)
     # mettre latitude longitude
     name = models.CharField(verbose_name="Nom", max_length=63)
-    datetime = models.DateTimeField(default=timezone.now)
-    active = models.BooleanField()
-    description = models.TextField(blank=True)
+    start_datetime = models.DateTimeField(default=timezone.now, verbose_name="Date de début")
+    active = models.BooleanField(default=True, verbose_name="Évènement non fini")
+    description = models.TextField(blank=True, verbose_name="Description")
 
     def __str__(self):
         return f"{self.name} par {self.organisateur.name}"
