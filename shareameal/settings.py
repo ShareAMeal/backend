@@ -25,7 +25,12 @@ SECRET_KEY = 'p!_41t07qd!k87&d=ymwi^0@qz865c_$v_fgl63ro)rcbaiee9'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = [
+    "https://shareameal.ribes.ovh",
+    "http://127.0.0.1:3000",
+    "http://localhost:3000"
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,12 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_filters',
+    'corsheaders',
     'web'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
