@@ -1,7 +1,9 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from web import models
+from api import models
+
+
 # Register your models here.
 @admin.register(models.Assocation)
 class AssoAdmin(admin.ModelAdmin):
