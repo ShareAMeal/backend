@@ -82,8 +82,11 @@ WSGI_APPLICATION = 'shareameal.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'djongo',
+        'NAME': 'pweb',
+        'CLIENT': {
+            'host': '192.168.0.25'
+        }
     }
 }
 

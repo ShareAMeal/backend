@@ -1,6 +1,6 @@
 [
   {
-    "model": "web.user",
+    "model": "api.user",
     "pk": 2,
     "fields": {
       "password": "pbkdf2_sha256$180000$vYD0qomutPPP$yPimqOUOD51gdXO3Z90+4lu3jokj8+a54oA5dK0mRTY=",
@@ -18,7 +18,7 @@
     }
   },
   {
-    "model": "web.user",
+    "model": "api.user",
     "pk": 3,
     "fields": {
       "password": "pbkdf2_sha256$180000$gZU2v8ShrfON$dNF6+nBVqzOs46NlcYT8DoBvWewFXvvc7KS3H6Hys0E=",
@@ -36,7 +36,7 @@
     }
   },
   {
-    "model": "web.user",
+    "model": "api.user",
     "pk": 4,
     "fields": {
       "password": "pbkdf2_sha256$180000$hM7PqPYoj1qw$StbP1O6O2b4dgg3NiUHqlFQ1evpzYaux25pmEMW7hZQ=",
@@ -54,7 +54,7 @@
     }
   },
   {
-    "model": "web.assocation",
+    "model": "api.assocation",
     "pk": 2,
     "fields": {
       "contact_email": "asso@helloasso.fr",
@@ -66,7 +66,7 @@
     }
   },
   {
-    "model": "web.assocation",
+    "model": "api.assocation",
     "pk": 3,
     "fields": {
       "contact_email": "sopita@asso-insa-lyon.fr",
@@ -78,7 +78,7 @@
     }
   },
   {
-    "model": "web.event",
+    "model": "api.event",
     "pk": 5,
     "fields": {
       "organizer": 2,
@@ -89,7 +89,7 @@
     }
   },
   {
-    "model": "web.event",
+    "model": "api.event",
     "pk": 6,
     "fields": {
       "organizer": 2,
