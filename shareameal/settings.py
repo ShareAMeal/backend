@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'corsheaders',
-    'api'
+    'api',
+    'htmlpropre'
 ]
 
 MIDDLEWARE = [
@@ -122,7 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-AUTH_USER_MODEL = 'api.User'
+AUTH_USER_MODEL = 'web.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
