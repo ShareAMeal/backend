@@ -9,7 +9,7 @@ class User(AbstractUser):
 
 
 
-class Assocation(models.Model):
+class Association(models.Model):
     contact_email = models.EmailField(unique=True, verbose_name="Email de contact")
     name = models.CharField(unique=True, verbose_name="Nom", max_length=127)
     location = models.CharField(verbose_name="Adresse", blank=True, null=True, max_length=1023)
@@ -25,7 +25,7 @@ class Event(models.Model):
     class Meta:
         verbose_name = "Évènement"
 
-    organizer = models.ForeignKey(to=Assocation, verbose_name="Organisateur", related_name='events',
+    organizer = models.ForeignKey(to=Association, verbose_name="Organisateur", related_name='events',
                                      on_delete=models.CASCADE)
     # mettre latitude longitude
     name = models.CharField(verbose_name="Nom", max_length=63)

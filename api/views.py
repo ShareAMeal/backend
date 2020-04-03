@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticate
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-from .models import Assocation, Event
+from .models import Association, Event
 from .serializers import AssoSerializer, EventSerializer
 
 
@@ -18,7 +18,7 @@ class AssoViewset(viewsets.ModelViewSet):
     """
     Donne toutes les associations
     """
-    queryset = Assocation.objects.all().order_by('name')
+    queryset = Association.objects.all().order_by('name')
     serializer_class = AssoSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = (SearchFilter,)

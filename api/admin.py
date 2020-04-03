@@ -5,7 +5,7 @@ from api import models
 
 
 # Register your models here.
-@admin.register(models.Assocation)
+@admin.register(models.Association)
 class AssoAdmin(admin.ModelAdmin):
     pass
 @admin.register(models.Event)
