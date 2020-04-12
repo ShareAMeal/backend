@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django_filters',
     'corsheaders',
     'api',
-    'register.apps.RegisterConfig'
+    'register.apps.RegisterConfig',
 ]
 
 MIDDLEWARE = [

@@ -1,7 +1,15 @@
+{% extends 'base.html' %}
+
 <h1>Créer une asso</h1>
+
+{% if existe %}
+<p><strong>Vous possédez déjà une association ! .</strong></p>
+{% else %}
 
 <form method="post" action=".">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Créer" />
 </form>
+
+{% endif %}

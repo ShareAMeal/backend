@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 from.models import Association
 
 
-
 # Create your views here.
 
 #Vue qui sert pour s enregistrer
@@ -57,18 +56,28 @@ def deconnexion(request):
 
 @login_required
 def creerasso(request):
-    if request.method == "POST":
-        form = CreerAsso(request.POST)
-        if form.is_valid():
-            asso = Association()
-            asso.contact_email = form.cleaned_data.get('contact_email')
-            asso.name = form.cleaned_data.get('name')
-            asso.location = form.cleaned_data.get('location')
-            asso.description = form.cleaned_data.get('description')
-            asso.phone = form.cleaned_data.get('phone')
-            asso.admin = request.user
-            asso.save()
-            redirect('ok')
+    def test():
+        for x in Association.objects.values():
+            if x['admin_id'] == request.user.id :
+                return(True)
+        return(False)
+    existe = test()
+    if not existe:
+        if request.method == "POST":
+            form = CreerAsso(request.POST)
+            if form.is_valid():
+                asso = Association()
+                asso.contact_email = form.cleaned_data.get('contact_email')
+                asso.name = form.cleaned_data.get('name')
+                asso.location = form.cleaned_data.get('location')
+                asso.description = form.cleaned_data.get('description')
+                asso.phone = form.cleaned_data.get('phone')
+                asso.admin = request.user
+                asso.save()
+                redirect('ok')
+        else:
+            form = CreerAsso()
+        return render(request, 'creerasso.html',locals())
     else:
-        form = CreerAsso()
-    return render(request, 'creerasso.html',locals())
+        return render(request, 'creerasso.html',locals())
+
