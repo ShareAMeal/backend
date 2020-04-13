@@ -1,0 +1,19 @@
+{% if asso == None %}
+<p><strong>Vous n'avez pas d'association !</strong></p>
+{% else %}
+
+<h1>Mon asso</h1>
+<p> Email : {{ asso.contact_email }}</p>
+<p> Nom : {{ asso.name }}</p>
+<p> Adresse : {{ asso.location }}</p>
+<p> Description : {{ asso.description }}</p>
+<p> Telephone : {{ asso.phone }}</p>
+
+<h1>Modifier mon asso</h1>
+<form method="post" action=".">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Modifier" />
+</form>
+
+{% endif %}

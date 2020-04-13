@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.utils import timezone
 
 #On recupere le model User cree dans api (Premier endroit où ça a été ecrit)
 from django.contrib.auth import get_user_model
@@ -18,8 +19,17 @@ class ConnexionForm(forms.Form):
     password = forms.CharField(label="Mot de passe", widget=forms.PasswordInput)
 
 class CreerAsso(forms.Form):
-    contact_email = forms.EmailField()
-    name = forms.CharField()
-    location = forms.CharField()
-    description = forms.CharField()
-    phone = forms.CharField()
+    contact_email = forms.EmailField(label="Email")
+    name = forms.CharField(label="Nom de l'association",max_length=127)
+    location = forms.CharField(label="Adresse",max_length=1023)
+    description = forms.CharField(label="Description")
+    phone = forms.CharField(label="Telephone",max_length=15)
+
+class CreerEvent(forms.Form):
+    name = forms.CharField(label="Nom", max_length=63)
+    start_datetime = forms.DateTimeField(label="Date de début")
+    start_datetime.initial=timezone.now
+    active = forms.BooleanField(label="Évènement non fini")
+    active.required = False
+    description = forms.CharField(label="Description")
+
