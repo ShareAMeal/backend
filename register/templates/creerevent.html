@@ -1,7 +1,7 @@
-<h1>Créer une asso</h1>
+<h1>Créer un evenement</h1>
 
-{% if existe %}
-<p><strong>Vous possédez déjà une association !</strong></p>
+{% if asso == None %}
+<p><strong>Vous ne possédez pas d'association !</strong></p>
 {% else %}
 
 <form method="post" action=".">

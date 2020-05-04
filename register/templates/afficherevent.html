@@ -1,0 +1,24 @@
+{% if actif == True %}
+    {% for x in all %}
+        {% if x.active %}
+        <p>
+            Nom : {{ x.name }} <br/>
+            Description : {{ x.description }}<br/>
+            Actif : {{ x.active }}<br/>
+            Debut : {{ x.start_datetime }}
+            Organisateur : {{ x.organizer.name }}
+        </p>
+        {% endif %}
+    {% endfor %}
+{% else %}
+{% for x in all %}
+<p>
+    Nom : {{ x.name }} <br/>
+    Description : {{ x.description }}<br/>
+    Actif : {{ x.active }}<br/>
+    Debut : {{ x.start_datetime }}
+    Organisateur : {{ x.organizer.name }}
+</p>
+{% endfor %}
+
+{% endif %}

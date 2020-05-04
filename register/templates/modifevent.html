@@ -1,0 +1,18 @@
+{% if asso == None %}
+<p><strong>Vous n'avez pas d'association !</strong></p>
+{% else %}
+<p>
+    Nom : {{ event.name }} <br/>
+    Description : {{ event.description }}<br/>
+    Actif : {{ event.active }}<br/>
+    Debut : {{ event.start_datetime }}
+    Organisateur : {{ event.organizer.name }}
+</p>
+<h1>Modifier mon event</h1>
+<form method="post" action=".">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Modifier" />
+</form>
+
+{% endif %}
