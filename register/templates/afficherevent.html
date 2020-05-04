@@ -1,24 +1,18 @@
-{% if actif == True %}
-    {% for x in all %}
-        {% if x.active %}
-        <p>
-            Nom : {{ x.name }} <br/>
-            Description : {{ x.description }}<br/>
-            Actif : {{ x.active }}<br/>
-            Debut : {{ x.start_datetime }}
-            Organisateur : {{ x.organizer.name }}
-        </p>
-        {% endif %}
-    {% endfor %}
-{% else %}
+<form method="post" action=".">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Modifier" />
+</form>
+
 {% for x in all %}
-<p>
+
+<p><!--Affichage event --->
     Nom : {{ x.name }} <br/>
     Description : {{ x.description }}<br/>
     Actif : {{ x.active }}<br/>
-    Debut : {{ x.start_datetime }}
-    Organisateur : {{ x.organizer.name }}
+    Debut : {{ x.start_datetime }}<br/>
+    Organisateur : {{ x.organizer.name }}<br/>
+{% if x.organizer == asso %} <a href="/register/modifevent/{{x.id}}"> Modifier l'event</a>{% endif %}
 </p>
-{% endfor %}
 
-{% endif %}
+{% endfor %}
