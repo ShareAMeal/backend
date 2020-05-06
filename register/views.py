@@ -134,7 +134,7 @@ def afficherevent(request):
     actif = False
     avant = False
     moi = False
-    now = timezone.now
+    now = timezone.localtime(timezone.now())
     all = Event.objects.order_by('start_datetime')
     if request.method == "POST":
         form = AfficheEvent(request.POST)
@@ -143,11 +143,19 @@ def afficherevent(request):
             actif = form.cleaned_data.get('actif')
             moi = form.cleaned_data.get('moi')
             if not actif:
-                all=all.filter(active=True)
-            if not moi:
-                all=all.filter(organizer=asso)
+                all=all.filter(active__exact=True)
+            if moi:
+                all=all.filter(organizer__exact=asso)
+            if not avant:
+                all=all.filter(start_datetime__gte=now)
             return render(request, 'afficherevent.html', locals())
     else:
+        if not actif:
+            all = all.filter(active__exact=True)
+        if moi:
+            all = all.filter(organizer__exact=asso)
+        if not avant:
+            all = all.filter(start_datetime__gte=now)
         form = AfficheEvent()
     return render(request, 'afficherevent.html',locals())
 
