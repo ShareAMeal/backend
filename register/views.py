@@ -1,7 +1,7 @@
 # Create your views here.
 
 from django.shortcuts import render, redirect
-from .forms import RegisterForm,ConnexionForm,CreerAsso,CreerEvent
+from .forms import RegisterForm,ConnexionForm,CreerAsso,CreerEvent,AfficheEvent
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
@@ -23,14 +23,10 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('ok')
+            return redirect(index)
     else:
         form = RegisterForm()
     return render(request, 'signup.html', {'form': form})
-
-def ok(request):
-    return render(request, 'ok.html')
-
 
 #Vue qui sert a se connecter
 def connexion(request):
@@ -43,7 +39,7 @@ def connexion(request):
             user = authenticate(username=username, password=password)  # Nous vérifions si les données sont correctes
             if user:  # Si l'objet renvoyé n'est pas None
                 login(request, user)  # nous connectons l'utilisateur
-                return redirect('connexion')
+                return redirect(index)
             else: # sinon une erreur sera affichée
                 error = True
     else:
@@ -53,7 +49,7 @@ def connexion(request):
 #Vu qui te deconnecte
 def deconnexion(request):
     logout(request)
-    return redirect(connexion)
+    return redirect(index)
 
 @login_required
 def creerasso(request):
@@ -70,7 +66,7 @@ def creerasso(request):
                 asso.phone = form.cleaned_data.get('phone')
                 asso.admin = request.user
                 asso.save()
-                redirect('ok')
+                return redirect(index)
         else:
             form = CreerAsso()
         return render(request, 'creerasso.html',locals())
@@ -94,7 +90,6 @@ def afficheasso(request):
                 asso.phone = form.cleaned_data.get('phone')
                 asso.admin = request.user
                 asso.save()
-                redirect('ok')
         else:
             form = CreerAsso()
             form.fields.get('contact_email').initial = asso.contact_email
@@ -123,7 +118,7 @@ def creerevent(request):
                 event.active = form.cleaned_data.get('active')
                 event.description = form.cleaned_data.get('description')
                 event.save()
-                redirect('ok')
+                return redirect(index)
         else:
             form = CreerEvent()
         return render(request, 'creerevent.html',locals())
@@ -132,10 +127,36 @@ def creerevent(request):
 
 def afficherevent(request):
     #Filtres
+    if Association.objects.filter(admin_id=request.user.id).exists():
+        asso = Association.objects.get(admin_id = request.user.id)
+    else:
+        asso = None
     actif = False
-    time_before = False
-    time = timezone.now
-    all = Event.objects.all()
+    avant = False
+    moi = False
+    now = timezone.localtime(timezone.now())
+    all = Event.objects.order_by('start_datetime')
+    if request.method == "POST":
+        form = AfficheEvent(request.POST)
+        if form.is_valid():
+            avant = form.cleaned_data.get('avant')
+            actif = form.cleaned_data.get('actif')
+            moi = form.cleaned_data.get('moi')
+            if not actif:
+                all=all.filter(active__exact=True)
+            if moi:
+                all=all.filter(organizer__exact=asso)
+            if not avant:
+                all=all.filter(start_datetime__gte=now)
+            return render(request, 'afficherevent.html', locals())
+    else:
+        if not actif:
+            all = all.filter(active__exact=True)
+        if moi:
+            all = all.filter(organizer__exact=asso)
+        if not avant:
+            all = all.filter(start_datetime__gte=now)
+        form = AfficheEvent()
     return render(request, 'afficherevent.html',locals())
 
 @login_required
@@ -147,7 +168,7 @@ def modifevent(request, event_id=1):
     if asso != None:
         event = Event.objects.get(id = event_id)
         if event.organizer != asso :
-            return render(request, 'modifevent.html', locals())
+            return redirect(afficherevent)
         if request.method == "POST":
             form = CreerEvent(request.POST)
             if form.is_valid():
@@ -156,7 +177,7 @@ def modifevent(request, event_id=1):
                 event.active = form.cleaned_data.get('active')
                 event.description = form.cleaned_data.get('description')
                 event.save()
-                redirect('ok')
+                return redirect(index)
         else:
             form = CreerEvent()
             form.fields.get('name').initial = event.name
@@ -166,3 +187,7 @@ def modifevent(request, event_id=1):
         return render(request, 'modifevent.html',locals())
     else:
         return render(request, 'modifevent.html',locals())
+
+
+def index(request):
+    return render(request, 'index.html',locals())

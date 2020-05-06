@@ -33,3 +33,13 @@ class CreerEvent(forms.Form):
     active.required = False
     description = forms.CharField(label="Description")
 
+class AfficheEvent(forms.Form):
+    avant = forms.BooleanField(label="Afficher les evenements passés")
+    avant.required = False
+    avant.initial = False
+    actif = forms.BooleanField(label="Afficher les evenements non actifs")
+    actif.required = False
+    actif.initial = False
+    moi = forms.BooleanField(label="Afficher mes évènements")
+    moi.required = False
+    moi.initial = False

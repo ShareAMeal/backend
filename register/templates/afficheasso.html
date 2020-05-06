@@ -1,5 +1,9 @@
+{% extends './base.html' %}
+{% block content %}
+
 {% if asso == None %}
 <p><strong>Vous n'avez pas d'association !</strong></p>
+    <a href="/register/creerasso">Créer une asso</a><br \>
 {% else %}
 
 <h1>Mon asso</h1>
@@ -17,3 +21,4 @@
 </form>
 
 {% endif %}
+{% endblock %}
