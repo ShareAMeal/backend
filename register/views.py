@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from.models import Association, Event
-from django.utils import timezone
+
 
 
 # Create your views here.
@@ -15,18 +15,21 @@ from django.utils import timezone
 #Vue qui sert pour s enregistrer
 #Cree un utilisateur
 def signup(request):
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect(index)
+    if request.user.is_authenticated == False:
+        if request.method == 'POST':
+            form = RegisterForm(request.POST)
+            if form.is_valid():
+                form.save()
+                username = form.cleaned_data.get('username')
+                raw_password = form.cleaned_data.get('password1')
+                user = authenticate(username=username, password=raw_password)
+                login(request, user)
+                return redirect(index)
+        else:
+            form = RegisterForm()
+        return render(request, 'signup.html', {'form': form})
     else:
-        form = RegisterForm()
-    return render(request, 'signup.html', {'form': form})
+        return redirect(index)
 
 #Vue qui sert a se connecter
 def connexion(request):
@@ -132,30 +135,23 @@ def afficherevent(request):
     else:
         asso = None
     actif = False
-    avant = False
     moi = False
-    now = timezone.localtime(timezone.now())
     all = Event.objects.order_by('start_datetime')
     if request.method == "POST":
         form = AfficheEvent(request.POST)
         if form.is_valid():
-            avant = form.cleaned_data.get('avant')
             actif = form.cleaned_data.get('actif')
             moi = form.cleaned_data.get('moi')
             if not actif:
                 all=all.filter(active__exact=True)
             if moi:
                 all=all.filter(organizer__exact=asso)
-            if not avant:
-                all=all.filter(start_datetime__gte=now)
             return render(request, 'afficherevent.html', locals())
     else:
         if not actif:
             all = all.filter(active__exact=True)
         if moi:
             all = all.filter(organizer__exact=asso)
-        if not avant:
-            all = all.filter(start_datetime__gte=now)
         form = AfficheEvent()
     return render(request, 'afficherevent.html',locals())
 
