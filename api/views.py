@@ -46,7 +46,7 @@ class AssoViewset(viewsets.ModelViewSet):
     @action(methods=['post'], detail=False, permission_classes=[IsAuthenticated])
     def mod(self, request):
         instance = self.request.user.association
-        request.parser_context['kwargs']['pk']=instance.pk
+        request.parser_context['kwargs']['pk'] = instance.pk
         if instance is not None:
             return self.update(request)
         else:
@@ -59,11 +59,17 @@ class EventViewset(viewsets.ModelViewSet):
     """
     serializer_class = EventSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
-    queryset = Event.objects.all()
 
     filter_backends = (SearchFilter, DjangoFilterBackend)
     search_fields = ('name', 'association__name')
     filterset_fields = ('organizer',)
+
+    def get_queryset(self):
+        queryset = Event.objects.all()
+        if self.request.method == 'POST':
+            if self.request.user.is_authenticated:
+                queryset = queryset.filter(organizer__admin=self.request.user)
+        return queryset
 
     def perform_create(self, serializer):
         if self.request.user.is_authenticated:
