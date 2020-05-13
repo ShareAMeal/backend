@@ -9,7 +9,7 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 
 from .models import Association, Event
-from .serializers import AssoSerializer, EventSerializer
+from .serializers import AssoSerializer, EventSerializer, UserSerializer
 
 
 # Create your views here.
@@ -84,3 +84,13 @@ class EventViewset(viewsets.ModelViewSet):
         """
         queryset = self.queryset.filter(active=True, start_datetime__lte=now())
         return Response(EventSerializer(queryset, many=True).data)
+
+
+class TestAuthViewSet(viewsets.ViewSet):
+    """
+    Sert à vérifier le pseudo/mot de passe lors d'une connexion Http Basic pour Android
+    """
+    permission_classes = [IsAuthenticated]
+
+    def list(self, request):
+        return Response(UserSerializer(self.request.user).data)
