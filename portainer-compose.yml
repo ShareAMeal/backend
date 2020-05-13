@@ -1,8 +1,21 @@
 version: '3'
-
+volumes:
+  data:
 services:
   backend:
-    image: pwebtcgr5/backend:datasrc
+    image: pwebtcgr5/backend:postgres
+    networks:
+      - caddy
+    deploy:
+      labels:
+        caddy.address: http://api.shareameal.ribes.ovh
+        caddy.tls: "off"
+        caddy.proxy.transparent:
+        caddy.targetport: "8000"
+    environment:
+      DATABASE_URL: 'postgres://shareameal:hjklhjkl@database:5432/prod'
+  frontend:
+    image: pwebtcgr5/frontend
     networks:
       - caddy
     deploy:
@@ -10,7 +23,15 @@ services:
         caddy.address: http://shareameal.ribes.ovh
         caddy.tls: "off"
         caddy.proxy.transparent:
-        caddy.targetport: "8000"
+        caddy.targetport: "80"
+  database:
+    image: library/postgres:11-alpine
+    environment:
+      POSTGRES_USER: "shareameal"
+      POSTGRES_PASSWORD: "hjklhjkl"
+      POSTGRES_DB: "prod"
+    volumes:
+      - data:/var/lib/postgresql/data
 networks:
   caddy:
     external:
