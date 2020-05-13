@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
         <head>
@@ -16,16 +15,16 @@
                         </div>
                         <h2>Site pour les maraudes</h2>
                     </div>
-
+                    
                     <nav>
                         <ul>
-
-                            <li><a href ="/register/">Accueil</a></li>
-                            <li><a href ="/register/connexion">Se connecter</a></li>
+                            
+                            <li><a href ="">Accueil</a></li>
+                            <li><a href ="">Se connecter</a></li>
                             <li><a href ="">A propos</a></li>
-                            <li><a href ="/register/afficherevent">Liste des maraudes</a></li>
+                            <li><a href ="">Liste des maraudes</a></li>
                         </ul>
-
+                        
                     </nav>
                 </header>
 
@@ -41,9 +40,8 @@
                 <section>
                     <article>
                         <form method="POST" action="traitement.php">
-                            <!--
                             <fieldset id="némero1">
-                                <legend>Créer son association</legend> <!--titre du fieldset-/->
+                                <legend>Créer son association</legend> <!--titre du fieldset-->
 
                                 <label for="nom">Nom de l'association </label>
                                 <input type="text" name ="nom" id="nom" placeholder="Ex : Ftour du coeur"/><br />
@@ -73,12 +71,11 @@
                                 <label for="mdp1">Confirmez votre mot de passe</label>
                                 <input type="password" name ="mdp1" id="mdp1"/><br /><br/>
 
-
+                                
                                 <input type="submit" value="Créer"/>
-                            </fieldset> -->
+                            </fieldset>
 
                             <fieldset id="numero2" >
-                                <!--
                                 <legend>S'authentifier</legend>
                                 <label for="login">Votre login</label>
                                 <input type="text" name ="login" id="login" placeholder="Ex : Ftducoeur98"/><br />
@@ -86,21 +83,7 @@
                                 <label for="mdp2">Votre mot de passe </label>
                                 <input type="password" name ="mdp2" id="mdp2" placeholder="Entrer mot de passe"/><br /><br /><br /><br/><br/><br/><br/><br/><br/>
                                 <input type="submit" value="Valider"/>
-                                --->
-                                {% if error %}
-                                    <p><strong>Utilisateur inconnu ou mauvais de mot de passe.</strong></p>
-                                    {% endif %}
 
-                                    {% if user.is_authenticated %}
-                                    Vous êtes connecté, {{ user.username }} !
-                                    {% else %}
-                                    <form method="post" action=".">
-                                        {% csrf_token %}
-                                        {{ form.as_p }}
-                                        <input type="submit" value="Se connecter" />
-                                    </form>
-                                        <a href="/register/signup">S'inscrire</a><br \>
-                                    {% endif %}
                             </fieldset>
 
 
@@ -115,11 +98,11 @@
                 </section>
 
                 <footer>
-
+                    
                     <div id="mail">
                         <h1>Par courriel</h1>
                         <p>Nous écrire à l'adresse mail suivante : ...</p>
-
+                    
                     </div>
                     <div id="tel">
                         <h1>Par téléphone</h1>

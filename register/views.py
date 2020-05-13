@@ -186,4 +186,4 @@ def modifevent(request, event_id=1):
 
 
 def index(request):
-    return render(request, 'index.html',locals())
+    return render(request, 'index.html', locals())
