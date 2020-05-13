@@ -1,13 +1,7 @@
 {% extends './base.html' %}
+{% load static %}
+{% block title %} Bienvenue sur ShareAMeal {% endblock %}
 {% block content %}
-
-<a href="/register/connexion">Se connecter</a><br \>
-<a href="/register/deconnexion">Se déconnecter</a><br \>
-<a href="/register/afficheasso">Afficher et modifier son asso</a><br \>
-<a href="/register/creerevent">Créer son evenement</a><br \>
-<a href="/register/afficherevent">Afficer et modifier son evenement</a><br \>
-
-
-
-
+    <div id="bienvenue"><img src="{% static "images/share_a_meal.png"%}" alt="Logo de Share a meal"/></div>
+    <h1>Bienvenue à tous !</h1><br />
 {% endblock %}
