@@ -1,10 +1,69 @@
-<head>
-<title> ShareAMeal </title>
-</head>
-<body>
-<h1>Bienvenue sur ShareAMeal</h1>
-<h2> Une initiative local</h2>
-<h3><a href="/register/">Index</a></h3>
+{% load static %}
+<!DOCTYPE html>
+<html>
+        <head>
+            <meta charset="utf-8"/>
+            <link rel="stylesheet" href="../../static/style1.css"/>
+            <title>{% block title %} {% endblock %}</title>
+        </head>
 
-{% block content %}
-{% endblock %}
+        <body>
+            <div id="bloc_page">
+                <header>
+                    <div id="titre principal">
+                        <div id="logo">
+                            <img src="{% static "images/share_a_meal.png"%}" alt = "Logo de Share a meal"/>
+                        </div>
+                        <h2>Site pour les maraudes</h2>
+                    </div>
+
+                    <nav>
+                        <ul>
+
+                            <li><a href ="/register/">Accueil</a></li>
+                            <li><a href ="/register/connexion/">Se connecter</a></li>
+                            <li><a href ="/register/deconnexion">Se déconnecter</a></li>
+                            <li><a href ="/register/afficheasso">Gérer son association</a></li>
+                            <li><a href ="/register/afficherevent">Liste des maraudes</a></li>
+                        </ul>
+                    </nav>
+                </header>
+
+                <div id= "banniere_image">
+                    <div id="banniere_description">
+                        Exemple d'associations
+                        <a href ="login.html" class = "bouton_rouge">Créer une association<img src="{% static "tp_images_polices/images/flecheblanchedroite.png"%}" alt=""/></a>
+
+
+                    </div>
+                </div>
+
+                <section>
+                <article>
+                    {% block content %}
+                    {% endblock %}
+                </article>
+                    <aside>
+                        <h1 id ="share">A propos de Share a meal</h1>
+                        <img src="{%  static "/tp_images_polices/images/bulle.png"%}" alt="" id="fleche_bulle"/>
+                        <p id="photo_shareameal"><img src="../../static/images/share_a_meal.png" alt="Logo de Share A Meal"/></p>
+                        <p>Un groupe d'étudiants qui à travers ce site s'attache avant tout au respect de la dignité humaine. Par l'engagement des associations, nous assurons une solidarité et un partage qui s'entendent envers les personnes défavorisées.</p>
+                    </aside>
+                </section>
+
+                <footer>
+
+                    <div id="mail">
+                        <h1>Par courriel</h1>
+                        <p>Nous écrire à l'adresse mail suivante : ...</p>
+
+                    </div>
+                    <div id="tel">
+                        <h1>Par téléphone</h1>
+                        <p>Nous appeler sur le numéro suivant : .....</p>
+                    </div>
+                </footer>
+            </div>
+        </body>
+</html>
+
