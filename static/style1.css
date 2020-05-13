@@ -29,7 +29,7 @@ body
 
 #bloc_page
 {
-    width: 900px;
+    width: 90%;
     margin: auto;
 }
 
@@ -93,7 +93,7 @@ nav li
 
 nav a
 {
-    font-size: 0.6em;
+    font-size: 1em;
     color:#181818;
     padding-bottom: 3px;
     text-decoration: none;
