@@ -137,15 +137,22 @@ def afficherevent(request):
     actif = False
     moi = False
     all = Event.objects.order_by('start_datetime')
+    ville = []
+    for x in Event.objects.all():
+        if x.ville != "":
+            ville.append(x.ville)
     if request.method == "POST":
         form = AfficheEvent(request.POST)
         if form.is_valid():
             actif = form.cleaned_data.get('actif')
             moi = form.cleaned_data.get('moi')
+            ville_form = form.cleaned_data.get('ville_form')
             if not actif:
                 all=all.filter(active__exact=True)
             if moi:
                 all=all.filter(organizer__exact=asso)
+            if ville_form != "":
+                all=all.filter(ville__contains=ville_form)
             return render(request, 'afficherevent.html', locals())
     else:
         if not actif:
@@ -172,6 +179,7 @@ def modifevent(request, event_id=1):
                 event.start_datetime = form.cleaned_data.get('start_datetime')
                 event.active = form.cleaned_data.get('active')
                 event.description = form.cleaned_data.get('description')
+                event.ville = form.cleaned_data.get('ville')
                 event.save()
                 return redirect(index)
         else:
@@ -180,6 +188,7 @@ def modifevent(request, event_id=1):
             form.fields.get('start_datetime').initial = event.start_datetime
             form.fields.get('active').initial = event.active
             form.fields.get('description').initial = event.description
+            form.fields.get('ville').initial = event.ville
         return render(request, 'modifevent.html',locals())
     else:
         return render(request, 'modifevent.html',locals())

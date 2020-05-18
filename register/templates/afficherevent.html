@@ -5,6 +5,11 @@
 <form method="post" action=".">
     {% csrf_token %}
     {{ form.as_p }}
+    <p> Liste des villes disponibles :
+        {% for x in ville %}
+        {{ x }}
+        {% endfor %}
+    </p>
     <input type="submit" value="Modifier" />
 </form>
 
@@ -16,6 +21,7 @@
     Actif : {{ x.active }}<br/>
     Debut : {{ x.start_datetime }}<br/>
     Organisateur : {{ x.organizer.name }}<br/>
+    Ville : {{ x.ville }}<br/>
 {% if x.organizer == asso %} <a href="/register/modifevent/{{x.id}}"> Modifier l'event</a>{% endif %}
 </p>
 

@@ -32,6 +32,7 @@ class CreerEvent(forms.Form):
     active = forms.BooleanField(label="Évènement non fini")
     active.required = False
     description = forms.CharField(label="Description")
+    ville = forms.CharField(label="Ville")
 
 class AfficheEvent(forms.Form):
     actif = forms.BooleanField(label="Afficher les evenements non actifs")
@@ -40,3 +41,5 @@ class AfficheEvent(forms.Form):
     moi = forms.BooleanField(label="Sélectionner mes évènements")
     moi.required = False
     moi.initial = False
+    ville_form = forms.CharField(label="Ville")
+    ville_form.required=False
