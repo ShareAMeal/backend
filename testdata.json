@@ -85,7 +85,8 @@
       "name": "Soupe populaire",
       "start_datetime": "2020-02-25T18:56:06Z",
       "active": true,
-      "description": "venez vous restaurer"
+      "description": "venez vous restaurer",
+      "ville": "Lyon"
     }
   },
   {
@@ -96,7 +97,8 @@
       "name": "Distribution de v\u00eatements",
       "start_datetime": "2020-02-25T18:56:52Z",
       "active": true,
-      "description": "polaires, chaussettes ..."
+      "description": "polaires, chaussettes ...",
+      "ville": "Paris"
     }
   }
 ]
