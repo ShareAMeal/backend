@@ -1,4 +1,5 @@
 {% extends './base.html' %}
+{% load static %}
 {% block title %} Modifier un evenement {% endblock %}
 {% block content %}
 
@@ -11,6 +12,7 @@
     Actif : {{ event.active }}<br/>
     Debut : {{ event.start_datetime }}
     Organisateur : {{ event.organizer.name }}
+    Ville : {{ event.organizer.Ville }}
 </p>
 <h1>Modifier mon event</h1>
 <form method="post" action=".">

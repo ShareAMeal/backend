@@ -62,7 +62,7 @@ class EventViewset(viewsets.ModelViewSet):
 
     filter_backends = (SearchFilter, DjangoFilterBackend)
     search_fields = ('name', 'association__name')
-    filterset_fields = ('organizer',)
+    filterset_fields = ('organizer', 'ville')
 
     def get_queryset(self):
         queryset = Event.objects.all()

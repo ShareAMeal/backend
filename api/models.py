@@ -16,7 +16,6 @@ class Association(models.Model):
     description = models.TextField()
     phone = models.CharField(blank=True, null=True, verbose_name="N° de téléphone", max_length=15)
     admin = models.OneToOneField(to=User, related_name='association', on_delete=models.CASCADE)
-
     def __str__(self):
         return self.name
 
@@ -32,6 +31,7 @@ class Event(models.Model):
     start_datetime = models.DateTimeField(default=timezone.now, verbose_name="Date de début")
     active = models.BooleanField(default=True, verbose_name="Évènement non fini")
     description = models.TextField(blank=True, verbose_name="Description")
+    ville = models.TextField(blank=True, verbose_name="Ville")
 
     def __str__(self):
         return f"{self.name} par {self.organizer.name}"
