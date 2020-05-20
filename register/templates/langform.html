@@ -1,0 +1,7 @@
+{% if LANGUAGE_CODE != lang %}
+    <form action="/i18n/setlang/" method="post">
+        <input type="hidden" value="{{ lang }}" name="language">
+        {% csrf_token %}
+        <button type="submit"><a>{{ language }}</a></button>
+    </form>
+{% endif %}
