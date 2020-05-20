@@ -1,4 +1,7 @@
 {% load static %}
+{% load i18n %}
+{% get_available_languages as LANGUAGES %}
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
 <html>
         <head>
@@ -19,7 +22,7 @@
 
                     <nav>
                         <ul>
-                            <li><a href ="/register/">Accueil</a></li>
+                            <li><a href ="/register/">{% trans "Accueil" %}</a></li>
                             <li><a href ="/register/connexion/">Se connecter</a></li>
                             <li><a href ="/register/deconnexion">Se déconnecter</a></li>
                             <li><a href ="/register/afficheasso">Gérer son association</a></li>
@@ -45,6 +48,10 @@
                         <img src="{%  static "/tp_images_polices/images/bulle.png"%}" alt="" id="fleche_bulle"/>
                         <p id="photo_shareameal"><img src="{% static "/images/share_a_meal.png" %}" alt="Logo de Share A Meal"/></p>
                         <p>Un groupe d'étudiants qui à travers ce site s'attache avant tout au respect de la dignité humaine. Par l'engagement des associations, nous assurons une solidarité et un partage qui s'entendent envers les personnes défavorisées.</p>
+                        <h6>langues:</h6>
+                        current: {{ LANGUAGE_CODE }}<br/>
+                        available:{{ LANGUAGES }}
+
                     </aside>
                 </section>
 

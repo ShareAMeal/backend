@@ -10,7 +10,7 @@ from rest_framework.response import Response
 
 from .models import Association, Event
 from .serializers import AssoSerializer, EventSerializer, UserSerializer
-
+from django.utils.translation import gettext as _
 
 # Create your views here.
 
@@ -41,7 +41,8 @@ class AssoViewset(viewsets.ModelViewSet):
                 request.parser_context['kwargs']['pk'] = instance.pk
                 return self.update(request)
         else:
-            raise APIException(detail="You have no association", code=status.HTTP_404_NOT_FOUND)
+            # Translators: This error should not arise, usually
+            raise APIException(detail=_("You have no association"), code=status.HTTP_404_NOT_FOUND)
 
     @action(methods=['post'], detail=False, permission_classes=[IsAuthenticated])
     def mod(self, request):
@@ -50,7 +51,7 @@ class AssoViewset(viewsets.ModelViewSet):
         if instance is not None:
             return self.update(request)
         else:
-            raise APIException(detail="You have no association", code=status.HTTP_404_NOT_FOUND)
+            raise APIException(detail=_("You have no association"), code=status.HTTP_404_NOT_FOUND)
 
 
 class EventViewset(viewsets.ModelViewSet):
