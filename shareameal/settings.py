@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -63,7 +64,10 @@ ROOT_URLCONF = 'shareameal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'shareameal/templates')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'shareameal/templates'),
+            os.path.join(BASE_DIR, 'register/templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -111,6 +115,14 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'fr-fr'
 
+LANGUAGES = [
+    ('fr', 'Français'),
+    ('en', 'English'),
+]
+LOCALE_PATHS = [
+    os.path.join(os.path.dirname(BASE_DIR), 'register/locale'),
+    os.path.join(os.path.dirname(BASE_DIR), 'api/locale'),
+]
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -132,7 +144,7 @@ REST_FRAMEWORK = {
 }
 
 STATICFILES_DIRS = (
-     os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
 
