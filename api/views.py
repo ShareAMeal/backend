@@ -1,16 +1,17 @@
 from django.utils.timezone import now
+from django.utils.translation import gettext as _
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.exceptions import APIException
 from rest_framework.filters import SearchFilter
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, SAFE_METHODS
 from rest_framework.request import Request
 from rest_framework.response import Response
 
 from .models import Association, Event
-from .serializers import AssoSerializer, EventSerializer, UserSerializer
-from django.utils.translation import gettext as _
+from .serializers import AssoSerializer, UserSerializer, EventReadSerializer, EventWriteSerializer
+
 
 # Create your views here.
 
@@ -58,7 +59,6 @@ class EventViewset(viewsets.ModelViewSet):
     """
     Renvoie tous les évènements
     """
-    serializer_class = EventSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     filter_backends = (SearchFilter, DjangoFilterBackend)
@@ -72,6 +72,12 @@ class EventViewset(viewsets.ModelViewSet):
                 queryset = queryset.filter(organizer__admin=self.request.user)
         return queryset
 
+    def get_serializer_class(self):
+        if self.request.method in SAFE_METHODS:
+            return EventReadSerializer
+        else:
+            return EventWriteSerializer
+
     def perform_create(self, serializer):
         if self.request.user.is_authenticated:
             if self.request.user.association is not None:
@@ -84,7 +90,7 @@ class EventViewset(viewsets.ModelViewSet):
         Renvoie les évènements à venir et en cours (début avant maintenant et actif=oui)
         """
         queryset = self.get_queryset().filter(active=True, start_datetime__lte=now())
-        return Response(EventSerializer(queryset, many=True).data)
+        return Response(EventReadSerializer(queryset, many=True).data)
 
 
 class TestAuthViewSet(viewsets.ViewSet):

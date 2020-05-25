@@ -10,10 +10,17 @@ class AssoSerializer(serializers.ModelSerializer):
         exclude = ['admin']
 
 
-class EventSerializer(serializers.ModelSerializer):
+class EventWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Event
         exclude = ['organizer']
+
+
+class EventReadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Event
+        exclude = []
+        depth = 1
 
 
 class UserSerializer(serializers.ModelSerializer):
