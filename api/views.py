@@ -83,7 +83,7 @@ class EventViewset(viewsets.ModelViewSet):
         """
         Renvoie les évènements à venir et en cours (début avant maintenant et actif=oui)
         """
-        queryset = self.queryset.filter(active=True, start_datetime__lte=now())
+        queryset = self.get_queryset().filter(active=True, start_datetime__lte=now())
         return Response(EventSerializer(queryset, many=True).data)
 
 
