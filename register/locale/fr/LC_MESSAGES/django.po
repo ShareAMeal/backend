@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 14:06+0000\n"
+"POT-Creation-Date: 2020-05-27 10:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,124 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: forms.py:22
+msgid "Nom d'utilisateur"
+msgstr ""
+
+#: forms.py:23
+msgid "Mot de passe"
+msgstr ""
+
+#: forms.py:27
+msgid "Email"
+msgstr ""
+
+#: forms.py:28
+msgid "Nom de l'association"
+msgstr ""
+
+#: forms.py:29
+msgid "Adresse"
+msgstr ""
+
+#: forms.py:30 forms.py:40
+msgid "Description"
+msgstr ""
+
+#: forms.py:31
+msgid "Telephone"
+msgstr "Télephone"
+
+#: forms.py:36
+msgid "Date de début"
+msgstr ""
+
+#: forms.py:38
+msgid "Évènement non fini"
+msgstr ""
+
+#: forms.py:41 forms.py:51
+msgid "Ville"
+msgstr ""
+
+#: forms.py:45
+msgid "Afficher les evenements non actifs"
+msgstr "Afficher les evènements non actifs"
+
+#: forms.py:48
+msgid "Sélectionner mes évènements"
+msgstr ""
+
+#: templates/afficheasso.html:18
+msgid "Modifier mon asso"
+msgstr ""
+
+#: templates/afficherevent.html:3
+msgid "Afficher les evenements"
+msgstr "Afficher les évènements"
+
+#: templates/base.html:19
+msgid "Site pour les maraudes"
+msgstr ""
+
+#: templates/base.html:26
+msgid "Accueil"
+msgstr ""
+
+#: templates/base.html:27
+msgid "Se connecter"
+msgstr ""
+
+#: templates/base.html:28
+msgid "Se deconnecter"
+msgstr "Se déconnecter"
+
+#: templates/base.html:29
+msgid "manage_asso"
+msgstr "Gérer son association"
+
+#: templates/base.html:30
+msgid "Liste des maraudes"
+msgstr ""
+
+#: templates/base.html:31
+msgid "create_event"
+msgstr "Créer des evenements"
+
+#: templates/base.html:38
+msgid "Aidez nous à rendre accessible les maraudes au plus grand nombre"
+msgstr ""
+
+#: templates/base.html:48
+msgid "A propos de Share a meal "
+msgstr "À propos de Share a meal"
+
+#: templates/base.html:51
+msgid "descritpion_shareameal"
+msgstr ""
+"Un groupe d'étudiants qui à travers ce site s'attache avant tout au respect "
+"de la dignité humaine. Par l'engagement des associations, nous assurons une "
+"solidarité et un partage qui s'entendent envers les personnes défavorisées."
+
+#: templates/base.html:59
+msgid "Par courriel"
+msgstr ""
+
+#: templates/base.html:60
+msgid "email_desc"
+msgstr "Nous écrire à l'adresse mail suivante"
+
+#: templates/base.html:64
+msgid "Par téléphone"
+msgstr ""
+
+#: templates/base.html:65
+msgid "phone_desc"
+msgstr "Nous appeler sur le numéro suivant"
+
 #: templates/index.html:7
 msgid "Bienvenue à tous !"
 msgstr ""
+
+#~ msgid "Creer des evenements"
+#~ msgstr "Créer des evenements"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 14:38+0000\n"
+"POT-Creation-Date: 2020-05-27 09:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: models.py:14
+msgid "Email de contact"
+msgstr "Contact mail"
+
+#: models.py:15
+msgid "Nom"
+msgstr "Name"
+
+#: models.py:16
+msgid "Addresse"
+msgstr "Adress"
+
+#: models.py:18
+msgid "N° de téléphone"
+msgstr "Phone number"
+
+#: models.py:28
+msgid "Organisateur"
+msgstr "Organizer"
+
 #. Translators: This error should not arise, usually
-#: views.py:45 views.py:54
+#: views.py:46 views.py:55
 msgid "You have no association"
-msgstr ""
+msgstr "You have no association"

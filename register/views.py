@@ -1,13 +1,12 @@
 # Create your views here.
 
-from django.shortcuts import render, redirect
-from .forms import RegisterForm, ConnexionForm, CreerAsso, CreerEvent, AfficheEvent
 from django.contrib.auth import login, authenticate
-from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+
+from .forms import RegisterForm, ConnexionForm, CreerAsso, CreerEvent, AfficheEvent
 from .models import Association, Event
-from django.utils.translation import gettext as _
 
 
 # Create your views here.
@@ -203,5 +202,4 @@ def modifevent(request, event_id=1):
 
 def index(request):
     return render(request, 'index.html', context={
-        "variable": _("valeur")
     })

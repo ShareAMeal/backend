@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 14:39+0000\n"
+"POT-Creation-Date: 2020-05-27 10:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,18 +18,134 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: forms.py:22
+msgid "Nom d'utilisateur"
+msgstr "Username"
+
+#: forms.py:23
+msgid "Mot de passe"
+msgstr "Password"
+
+#: forms.py:27
+msgid "Email"
+msgstr "Mail"
+
+#: forms.py:28
+msgid "Nom de l'association"
+msgstr "Name of the fellowship"
+
+#: forms.py:29
+#, fuzzy
+#| msgid "Addresse"
+msgid "Adresse"
+msgstr "Adress"
+
+#: forms.py:30 forms.py:40
+msgid "Description"
+msgstr "Description"
+
+#: forms.py:31
+msgid "Telephone"
+msgstr "Phone number"
+
+#: forms.py:36
+msgid "Date de début"
+msgstr "Start date"
+
+#: forms.py:38
+msgid "Évènement non fini"
+msgstr "Event is not finished"
+
+#: forms.py:41 forms.py:51
+msgid "Ville"
+msgstr "City"
+
+#: forms.py:45
+#, fuzzy
+#| msgid "Afficher les evenements"
+msgid "Afficher les evenements non actifs"
+msgstr "List events"
+
+#: forms.py:48
+msgid "Sélectionner mes évènements"
+msgstr "Select my events"
+
+#: templates/afficheasso.html:18
+msgid "Modifier mon asso"
+msgstr "Modify my fellowship"
+
 #: templates/afficherevent.html:3
 msgid "Afficher les evenements"
 msgstr "List events"
 
-#: templates/base.html:25
+#: templates/base.html:19
+msgid "Site pour les maraudes"
+msgstr "Marauding website"
+
+#: templates/base.html:26
 msgid "Accueil"
 msgstr "Home"
+
+#: templates/base.html:27
+msgid "Se connecter"
+msgstr "Login"
+
+#: templates/base.html:28
+msgid "Se deconnecter"
+msgstr "Logout"
+
+#: templates/base.html:29
+msgid "manage_asso"
+msgstr "Manage my fellowship"
+
+#: templates/base.html:30
+msgid "Liste des maraudes"
+msgstr "Maraud list"
+
+#: templates/base.html:31
+msgid "create_event"
+msgstr "Create a new event"
+
+#: templates/base.html:38
+msgid "Aidez nous à rendre accessible les maraudes au plus grand nombre"
+msgstr "Help us make marauding easy to access for the general public"
+
+#: templates/base.html:48
+msgid "A propos de Share a meal "
+msgstr "About ShareAmeal"
+
+#: templates/base.html:51
+msgid "descritpion_shareameal"
+msgstr ""
+"A group of students who care first about respecting human dignity with this "
+"website. Through fellowship, we bring together solidarity and sharing to "
+"less privileged people."
+
+#: templates/base.html:59
+msgid "Par courriel"
+msgstr "By e-mail"
+
+#: templates/base.html:60
+msgid "email_desc"
+msgstr "Send us an email at the following adress"
+
+#: templates/base.html:64
+msgid "Par téléphone"
+msgstr "By phone"
+
+#: templates/base.html:65
+msgid "phone_desc"
+msgstr "Call us on the following number"
 
 #: templates/index.html:7
 msgid "Bienvenue à tous !"
 msgstr "Welcome everyone !"
 
-#: views.py:206
-msgid "valeur"
-msgstr "value"
+#~ msgid "By e-mail"
+#~ msgstr "By e-mail"
+
+#~ msgid "Creer des evenements"
+#~ msgstr "List events"
+
+#~ msgid "valeur"
+#~ msgstr "value"

@@ -1,25 +1,26 @@
 {% extends './base.html' %}
+{% load i18n %}
 {% block title %} Afficher son association {% endblock %}
 {% block content %}
 
-{% if asso == None %}
-<p><strong>Vous n'avez pas d'association !</strong></p>
-    <a href="/register/creerasso">Créer une asso</a><br \>
-{% else %}
+    {% if asso == None %}
+        <p><strong>Vous n'avez pas d'association !</strong></p>
+        <a href="/register/creerasso">Créer une asso</a><br>
+    {% else %}
 
-<h1>Mon asso</h1>
-<p> Email : {{ asso.contact_email }}</p>
-<p> Nom : {{ asso.name }}</p>
-<p> Adresse : {{ asso.location }}</p>
-<p> Description : {{ asso.description }}</p>
-<p> Telephone : {{ asso.phone }}</p>
+        <h1>Mon asso</h1>
+        <p> Email : {{ asso.contact_email }}</p>
+        <p> Nom : {{ asso.name }}</p>
+        <p> Adresse : {{ asso.location }}</p>
+        <p> Description : {{ asso.description }}</p>
+        <p> Telephone : {{ asso.phone }}</p>
 
-<h1>Modifier mon asso</h1>
-<form method="post" action=".">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Modifier" />
-</form>
+        <h1>{% trans "Modifier mon asso" %}</h1>
+        <form method="post" action=".">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Modifier"/>
+        </form>
 
-{% endif %}
+    {% endif %}
 {% endblock %}
