@@ -5,7 +5,7 @@ from . import models
 
 class AssoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Assocation
+        model = models.Association
         exclude = ['admin']
 
 

@@ -8,17 +8,18 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticate
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-from .models import Assocation, Event
+from .models import Association, Event
 from .serializers import AssoSerializer, EventSerializer
 
 
 # Create your views here.
-
+"""
 class AssoViewset(viewsets.ModelViewSet):
     """
+"""
     Donne toutes les associations
-    """
-    queryset = Assocation.objects.all().order_by('name')
+   """ """
+    queryset = Association.objects.all().order_by('name')
     serializer_class = AssoSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = (SearchFilter,)
@@ -29,9 +30,9 @@ class AssoViewset(viewsets.ModelViewSet):
 
     @action(methods=('get',), detail=False, permission_classes=[IsAuthenticatedOrReadOnly])
     def mine(self, request: Request):
-        """
+        """ """
         Montre directement l'association de l'utilisateur. Cet endpoint ne permet pas de modifier l'objet
-        """
+        """ """
         instance = self.request.user.association
         if instance is not None:
             if request.method == 'GET':
@@ -54,9 +55,9 @@ class AssoViewset(viewsets.ModelViewSet):
 
 
 class EventViewset(viewsets.ModelViewSet):
-    """
+    """ """
     Renvoie tous les évènements
-    """
+    """ """
     serializer_class = EventSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Event.objects.all()
@@ -73,8 +74,9 @@ class EventViewset(viewsets.ModelViewSet):
 
     @action(methods=['get'], detail=False)
     def open(self, request):
-        """
+        """ """
         Renvoie les évènements à venir et en cours (début avant maintenant et actif=oui)
-        """
+        """ """
         queryset = self.queryset.filter(active=True, start_datetime__lte=now())
         return Response(EventSerializer(queryset, many=True).data)
+"""

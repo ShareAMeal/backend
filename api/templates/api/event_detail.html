@@ -1,0 +1,30 @@
+
+{%  extends "public/base.html" %}
+{% block content %}
+            <article class="media content-section">
+              <img class="rounded-circle article-img" src="{{ event.organizer.image.url }}" alt="">
+              <div class="media-body">
+                <div class="article-metadata">
+                  <a class="mr-2" href="{% url 'asso-events' event.organizer.name %}">{{ event.organizer }}</a>
+                </div>
+                  <h2 class="article-title">{{ event.name }}</h2>
+                  <p class="article-content">{{ event.description }}</p>
+                  {% if event.location != null %}
+
+                      <p>Date : {{ event.start_datetime }}</p>
+                      {% if event.active %}
+                        <p style="color:Red;"> Upcoming event! </p>
+                      {% endif %}
+                      <p>Location: {{ event.location }}</p>
+                      <a href="https://www.google.com/maps/search/{{ event.location }}"> Search location </a>
+                  {% endif %}
+              </div>
+                {% if event.organizer.user == user %}
+              <div>
+                  <a class="button btn-secondary btn-sm mt-1" href="{% url 'event-update' event.pk %}">Update</a>
+                  <a class="button btn-danger btn-sm mt-1" href="{% url 'event-delete' event.pk %}">Delete</a>
+              </div>
+                {% endif %}
+
+            </article>
+{% endblock content %}

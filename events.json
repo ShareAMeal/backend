@@ -1,0 +1,30 @@
+[
+  {
+      "organizer_id": 1,
+      "name": "TestEvent1",
+      "start_datetime": "2020-02-25T18:48:13Z",
+      "active": true,
+      "description": "Description 1"
+  },
+  {
+      "organizer_id": 1,
+      "name": "TestEvent2",
+      "start_datetime": "2020-02-26T18:48:13Z",
+      "active": true,
+      "description": "Description 2"
+  },
+  {
+      "organizer_id": 1,
+      "name": "TestEvent3",
+      "start_datetime": "2020-02-27T18:48:13Z",
+      "active": true,
+      "description": "Description 3"
+  },
+  {
+      "organizer_id": 1,
+      "name": "TestEvent4",
+      "start_datetime": "2020-02-28T18:48:13Z",
+      "active": true,
+      "description": "Description 4"
+  }
+]

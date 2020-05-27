@@ -1,0 +1,32 @@
+
+{%  extends "public/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Register Your Association !</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Register</button>
+            </div>
+        </form>
+
+        <div>
+            You need to have an Admin Account to be able to create and delete associations.
+        </div>
+        <small class="text-muted">
+            So that all members of your association can use the Association account.
+        </small>
+        <div>
+            If you don't have an Admin Account create it here: <a class="ml-2" href="{%url 'reg_admin' %}">Create Admin Account</a>
+        </div>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already have an account for your Association? <a class="ml-2" href="{%url 'login_asso' %}">Sign In</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}
